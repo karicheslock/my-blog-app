@@ -6,6 +6,12 @@ function Home({isAuth}) {
 const [postList, setPostList] = useState([]);
 const postsCollectionRef = collection(db, "posts");
 
+
+const deletePost = async (id) => {
+    const postDoc = doc(db, "posts", id);
+    await deleteDoc(postDoc);
+}
+
 useEffect(() => {
     const getPosts = async () => {
         const data = await getDocs(postsCollectionRef);
@@ -14,11 +20,6 @@ useEffect(() => {
 
     getPosts();
 }, [deletePost]);
-
-const deletePost = async (id) => {
-    const postDoc = doc(db, "posts", id);
-    await deleteDoc(postDoc);
-}
 
     return (
         <div className='homePage'>
