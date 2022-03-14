@@ -19,25 +19,29 @@ function App() {
   };
 
   return (
-    <Router>
-      <nav>
-        <Link to="/">Home</Link>
+    <div className='bg-light-olive'>
+      <Router>
+        <div className='flex flex-col bg-subdued-scarlet h-20 text-light-teal items-center justify-center'>
+          <nav>
+            <Link to="/" className='font-bold text-3xl px-5'>Home</Link>
 
-        {!isAuth ? (
-        <Link to="/login">Login</Link>
-        ) : (
-          <>
-            <Link to="/createpost">Create Post</Link>
-            <button onClick={ signUserOut }>Log Out</button>
-          </>
-        )}
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home isAuth={isAuth} />} />
-        <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
-        <Route path="/login" element={<Login setIsAuth={ setIsAuth } />} />
-      </Routes>
-    </Router>
+            {!isAuth ? (
+            <Link to="/login" className='font-bold text-3xl px-5'>Login</Link>
+            ) : (
+              <>
+                <Link to="/createpost" className='font-bold text-3xl px-5'>Create Post</Link>
+                <button onClick={ signUserOut } className='font-bold text-3xl px-5'>Log Out</button>
+              </>
+            )}
+          </nav>
+        </div>
+        <Routes>
+          <Route path="/" element={<Home isAuth={isAuth} />} />
+          <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
+          <Route path="/login" element={<Login setIsAuth={ setIsAuth } />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
