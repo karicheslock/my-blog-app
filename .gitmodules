@@ -1,0 +1,3 @@
+[submodule "karicheslock/my-blog-app"]
+path = karicheslock/my-blog-app
+url = https://github.com/karicheslock/my-blog-app.git
