@@ -19,32 +19,44 @@ useEffect(() => {
     };
 
     getPosts();
-}, [deletePost]);
+}, []);
+
+useEffect(() => {
+    document.title = 'Home';
+}, [])
 
     return (
-        <div className='container flex flex-col mx-auto max-w-screen-md items-center h-screen justify-center'>
-            {postList.map((post) => {
-                return (
-                    <div className='flex flex-col mx-auto w-full py-5 px-4 items-center'>
-                        <div className='flex mx-auto w-1/2'>
-                            <div className='w-full text-xl font-bold text-subdued-scarlet border-4 border-light-teal rounded px-4 py-4'>
-                                <h1>{post.title}</h1>
+        <div className='container flex flex-col mx-auto max-w-screen-2xl items-center min-h-screen justify-center'>
+            {!isAuth ? (
+                <div className='container flex flex-col items-center'>
+                    <h1 className='font-bold text-subdued-scarlet text-4xl'>Please Click <span className='text-light-teal'><a href='/login'>Login</a></span> to Start Creating Your Travel Journal.</h1>
+                    <h2 className='font-bold text-subdued-scarlet text-2xl py-4'>You will be able to login with your Google account.</h2>
+                </div>
+            ) : (          
+            postList.map((post) => {
+                    return (
+                        <div key={post.id} className='flex flex-col mx-auto w-full py-5 px-4 items-center'>
+                            <div className='flex mx-auto w-1/2'>
+                                <div className='w-full text-xl font-bold text-subdued-scarlet border-4 border-light-teal rounded px-4 py-4 h-36'>
+                                    <h1 className='flex justify-center'>{post.title}</h1>
+                                </div>
+                                <div>
+                                    {post.image !== undefined && <img className='max-w-xs h-36' src={post.image} alt={`${post.title} image`} />}
+                                </div>
                             </div>
-                            <div>
-                                {console.log(post.image)}
-                                {post.image !== undefined && <img src={post.image} alt={`${post.title} image`} />}
+                            <div className='w-1/2 h-72 flex flex-wrap text-lg border-4 border-subdued-scarlet rounded'>
+                                {post.postText}
                             </div>
-                            <div className='text-lg self-center'>
-                                {isAuth && post.author.id === auth.currentUser.uid && <button onClick={() => {deletePost(post.id)}}> &#128465;</button>}
+                            <div className='flex w-1/2 py-2'>
+                                <h3 className='flex w-1/2 text-subdued-scarlet'>@{post.author.name}</h3>
+                                <div className='text-md flex ml-40 w-1/8 border-2 border-light-teal rounded bg-light-teal px-4 py-2'>
+                                    {isAuth && post.author.id === auth.currentUser.uid && <button className='text-white' onClick={() => {deletePost(post.id)}}>Delete Above Post</button>}
+                                </div>
                             </div>
                         </div>
-                        <div className='w-1/2 h-36 flex flex-wrap text-lg border-4 border-subdued-scarlet rounded'>
-                            {post.postText}
-                        </div>
-                        <h3 className='flex w-1/2'>@{post.author.name}</h3>
-                    </div>
-                )
-            })}
+                    )
+                })
+            )}
         </div>
     )
 }

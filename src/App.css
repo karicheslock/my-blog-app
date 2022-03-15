@@ -39,3 +39,7 @@
   cursor: not-allowed;
 }
 
+#input-btn {
+  cursor: pointer;
+}
+
