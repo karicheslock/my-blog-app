@@ -19,7 +19,7 @@ useEffect(() => {
     };
 
     getPosts();
-}, []);
+}, [postsCollectionRef]);
 
 useEffect(() => {
     document.title = 'Home';
@@ -41,7 +41,7 @@ useEffect(() => {
                                     <h1 className='flex justify-center'>{post.title}</h1>
                                 </div>
                                 <div>
-                                    {post.image !== undefined && <img className='max-w-xs h-36' src={post.image} alt={`${post.title} image`} />}
+                                    {post.image !== undefined && <img className='max-w-xs h-36' src={post.image} alt={`${post.title}`} />}
                                 </div>
                             </div>
                             <div className='w-1/2 h-72 flex flex-wrap text-lg border-4 border-subdued-scarlet rounded'>
