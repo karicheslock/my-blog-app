@@ -14,13 +14,17 @@ function CreatePost({ isAuth }) {
     let navigate = useNavigate();
 
      const createPost = async () => {
-        await addDoc(postsCollectionRef, { 
-            title, 
-            postText, 
-            author: { name: auth.currentUser.displayName, id: auth.currentUser.uid }, 
-            image,
-        });
-        navigate("/");
+        try {
+            await addDoc(postsCollectionRef, { 
+                title, 
+                postText, 
+                author: { name: auth.currentUser.displayName, id: auth.currentUser.uid }, 
+                image,
+            });
+            navigate("/");
+        } catch(error) {
+            console.log(error);
+        }
     };
 
     const onImageChange = (event) => {
