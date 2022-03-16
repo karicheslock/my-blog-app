@@ -78,7 +78,7 @@ function CreatePost({ isAuth }) {
                     }} />
                 </div>
                 <div className='flex flex-col items-center justify-center'>
-                    <form onSubmit={onImageChange}>
+                    <form method="POST" onSubmit={onImageChange}>
                         <label className='text-2xl text-subdued-scarlet py-4'>Add an image?</label>
                         <div className='flex text-subdued-scarlet mt-4'>
                             <input type="file" id='input-btn' className='input' aria-label='Select file' />
