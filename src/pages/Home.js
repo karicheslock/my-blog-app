@@ -20,7 +20,7 @@ useEffect(() => {
     };
 
     getPosts();
-}, [postsCollectionRef]);
+}, []);
 
 useEffect(() => {
     document.title = 'Home';
@@ -30,8 +30,8 @@ useEffect(() => {
         <div className='container flex flex-col mx-auto max-w-screen-2xl items-center min-h-screen justify-center'>
             {!isAuth ? (
                 <div className='container flex flex-col items-center'>
-                    <h1 className='font-bold text-subdued-scarlet text-4xl py-4'>WELCOME TO THE TRAVEL JOURNAL BUILDER</h1>
-                    <h1 className='font-bold text-subdued-scarlet text-3xl py-4'>Get ready to create something AMAZING!</h1>
+                    <h1 className='font-bold text-subdued-scarlet text-4xl py-4'>WELCOME TO MY AWESOME TRAVEL JOURNAL WEBSITE</h1>
+                    <h1 className='font-bold text-subdued-scarlet text-3xl py-4'>Get ready to post something AMAZING!</h1>
                     <h1 className='font-bold text-subdued-scarlet text-4xl py-4'>Please Click <span className='text-light-teal'><Link to='/login'>Login</Link></span> to Start Creating Your Travel Journal.</h1>
                     <h2 className='font-bold text-subdued-scarlet text-2xl py-4'>You will be able to login with your Google account.</h2>
                 </div>
