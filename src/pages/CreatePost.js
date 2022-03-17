@@ -55,7 +55,7 @@ function CreatePost({ isAuth }) {
         if (!isAuth) {
             navigate("/login");
         }
-    }, [])
+    }, [isAuth, navigate])
 
     useEffect(() => {
         document.title = 'Create A Post';

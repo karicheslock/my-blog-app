@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { auth, db } from '../firebase-config';
 import { Link } from 'react-router-dom';
+import { postcss } from 'tailwindcss';
 
 function Home({isAuth}) {
 const [postList, setPostList] = useState([]);
@@ -20,7 +21,7 @@ useEffect(() => {
     };
 
     getPosts();
-}, []);
+}, [postsCollectionRef]);
 
 useEffect(() => {
     document.title = 'Home';
