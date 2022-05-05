@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Home({isAuth}) {
 const [postList, setPostList] = useState([]);
-const postsCollectionRef = collection(db, "posts");
+
 
 
 const deletePost = async (id) => {
@@ -16,6 +16,7 @@ const deletePost = async (id) => {
 
 useEffect(() => {
     const getPosts = async () => {
+        const postsCollectionRef = collection(db, "posts");
         const data = await getDocs(postsCollectionRef);
         setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     };
