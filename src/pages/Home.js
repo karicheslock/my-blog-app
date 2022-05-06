@@ -13,7 +13,7 @@ const deletePost = async (id) => {
     const postDoc = doc(db, "posts", id);
     await deleteDoc(postDoc);
 }
-
+let postsCollectionRef;
 useEffect(() => {
     const postsCollectionRef = collection(db, "posts");
     const getPosts = async () => {
