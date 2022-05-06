@@ -15,8 +15,9 @@ const deletePost = async (id) => {
 }
 
 useEffect(() => {
+    const postsCollectionRef = collection(db, "posts");
     const getPosts = async () => {
-        const postsCollectionRef = collection(db, "posts");
+        
         const data = await getDocs(postsCollectionRef);
         setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     };
